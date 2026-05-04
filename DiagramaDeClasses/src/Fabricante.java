@@ -9,7 +9,9 @@ public abstract class Fabricante{
         this.statusConexao = validarConexao();
     }
 
-    abstract public void obterDados();
+    public void obterDados(){
+        System.out.println("Extraindo dados...");
+    };
 
     public void setID(int ID) {
         this.ID = ID;

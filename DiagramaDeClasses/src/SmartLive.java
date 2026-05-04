@@ -5,6 +5,7 @@ public class SmartLive extends Fabricante{
         super(ID);
     }
 
+    @Override
     public void obterDados(){
         if(this.validarConexao()){
             System.out.println("Extraindo dados do paciente via plataforma Smart Live");
