@@ -4,9 +4,9 @@ public abstract class Fabricante{
 
     public Fabricante() {}
 
-    public Fabricante(int ID, boolean statusConexao) {
+    public Fabricante(int ID) {
         this.ID = ID;
-        this.statusConexao = statusConexao;
+        this.statusConexao = validarConexao();
     }
 
     abstract public void obterDados();
@@ -29,9 +29,12 @@ public abstract class Fabricante{
 
     @Override
     public String toString() {
-        return "\n\tFabricante{" +
-                "\nID: " + this.ID +
+        return "\nID: " + this.ID +
                 "\nStatus de Conexão: " + this.statusConexao +
                 "\n}";
+    }
+
+    public boolean validarConexao(){
+        return true;
     }
 }

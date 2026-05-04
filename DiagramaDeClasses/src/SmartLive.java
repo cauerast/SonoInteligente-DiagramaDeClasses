@@ -2,10 +2,21 @@ public class SmartLive extends Fabricante{
     public SmartLive() {}
 
     public SmartLive(int ID, boolean statusConexao) {
-        super(ID, statusConexao);
+        super(ID);
     }
 
     public void obterDados(){
-        System.out.println("Extraindo dados do dispositivo CPAP via plataforma Smart Live");
+        if(this.validarConexao()){
+            System.out.println("Extraindo dados do paciente via plataforma Smart Live");
+        } else {
+            System.out.println("Falha ao extrair dados, verifique a conexão!");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "SmartLive {" +
+                super.toString() +
+                "\n}";
     }
 }

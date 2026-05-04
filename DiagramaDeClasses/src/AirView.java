@@ -2,11 +2,21 @@ public class AirView extends Fabricante{
     public AirView() {}
 
     public AirView(int ID, boolean statusConexao) {
-        super(ID, statusConexao);
+        super(ID);
     }
 
     public void obterDados(){
-        System.out.println("Extraindo dados do dispositivo CPAP via plataforma AirView");
+        if(this.validarConexao()){
+            System.out.println("Extraindo dados do paciente via plataforma AirView");
+        } else {
+            System.out.println("Falha ao extrair dados, verifique a conexão!");
+        }
     }
 
+    @Override
+    public String toString() {
+        return "AirView {" +
+                super.toString() +
+                "\n}";
+    }
 }
