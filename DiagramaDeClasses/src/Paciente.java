@@ -7,8 +7,7 @@ public class Paciente {
     private LocalDate dataNasc;
     private CPAP cpap;
 
-    public Paciente() {
-    }
+    public Paciente() {}
 
     public Paciente(int ID, String nome, String CPF, String cidade, String telefone, LocalDate dataNasc) {
         this.ID = ID;
@@ -84,10 +83,11 @@ public class Paciente {
                 "\nCidade: " + this.cidade +
                 "\nTelefone: " + this.telefone +
                 "\nData de Nascimento: " + this.dataNasc +
+                "\nCPAP: " + this.cpap +
                 "\n}";
     }
 
-    public void classificarPaciente(){
+    public void classificarIndiceApneia(){
         System.out.println("Classificando paciente pelo índice de apneia do sono...");
     }
 
