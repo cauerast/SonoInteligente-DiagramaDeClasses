@@ -1,4 +1,5 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
