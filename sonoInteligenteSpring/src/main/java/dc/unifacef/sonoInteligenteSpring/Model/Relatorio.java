@@ -17,7 +17,8 @@ public class Relatorio {
     @Column(nullable = false)
     private String relatorio;
 
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdPaciente", nullable = false)
     private Paciente paciente;
 
     public void setId(Long ID) {
@@ -48,7 +49,7 @@ public class Relatorio {
         return this.relatorio;
     }
 
-    public Long getIDPaciente() {
-        return this.IDPaciente;
+    public Paciente getPaciente() {
+        return this.paciente;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class RelatorioService {
-    private RelatorioRepository repo;
+    private final RelatorioRepository repo;
 
     public RelatorioService(RelatorioRepository repo) {
         this.repo = repo;
