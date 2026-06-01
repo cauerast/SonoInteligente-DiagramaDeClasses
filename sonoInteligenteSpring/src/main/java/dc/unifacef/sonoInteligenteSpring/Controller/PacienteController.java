@@ -2,7 +2,6 @@ package dc.unifacef.sonoInteligenteSpring.Controller;
 
 import dc.unifacef.sonoInteligenteSpring.Model.Paciente;
 import dc.unifacef.sonoInteligenteSpring.Service.PacienteService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,7 +58,4 @@ public class PacienteController {
         }
         return ResponseEntity.noContent().build();
     }
-
-
-
 }
