@@ -1,18 +1,10 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
-public class AirView extends Fabricante{
-    public AirView() {}
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-    public AirView(Long id, boolean statusConexao) {
-        super(id);
-    }
+@Entity
+@Table(name = "airView")
+public class AirView extends Fabricante {
 
-    @Override
-    public void obterDados(){
-        if(this.validarConexao()){
-            System.out.println("Extraindo dados do paciente via plataforma AirView");
-        } else {
-            System.out.println("Falha ao extrair dados, verifique a conexão!");
-        }
-    }
 }

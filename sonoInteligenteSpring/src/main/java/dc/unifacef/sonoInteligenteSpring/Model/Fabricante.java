@@ -1,21 +1,17 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import jakarta.persistence.*;
+
+@MappedSuperclass
 public abstract class Fabricante{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+
+    @Column(nullable = false)
     protected boolean statusConexao;
 
-    public Fabricante() {}
-
-    public Fabricante(Long id) {
-        this.id = id;
-        this.statusConexao = validarConexao();
-    }
-
-    public void obterDados(){
-        System.out.println("Extraindo dados...");
-    };
-
-    public void setID(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,9 +25,5 @@ public abstract class Fabricante{
 
     public boolean isStatusConexao() {
         return this.statusConexao;
-    }
-
-    public boolean validarConexao(){
-        return true;
     }
 }
