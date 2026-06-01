@@ -3,7 +3,7 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 import java.time.LocalDateTime;
 
 public class CPAP {
-    private int ID;
+    private Long ID;
     private String modelo, tipoConexao;
     private boolean status;
     private LocalDateTime dataInicio;
@@ -12,7 +12,7 @@ public class CPAP {
 
     public CPAP() {}
 
-    public CPAP(int ID, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante) {
+    public CPAP(Long ID, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante) {
         this.ID = ID;
         this.modelo = modelo;
         this.tipoConexao = tipoConexao;
@@ -22,7 +22,7 @@ public class CPAP {
         this.fabricante = fabricante;
     }
 
-    public void setID(int ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -50,7 +50,7 @@ public class CPAP {
         this.fabricante = fabricante;
     }
 
-    public int getID() {
+    public Long getID() {
         return this.ID;
     }
 

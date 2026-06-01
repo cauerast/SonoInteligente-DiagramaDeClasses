@@ -1,35 +1,56 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@Entity
+@Table(name="pacientes")
 public class Paciente {
-    private int ID;
-    private String nome, CPF, cidade, telefone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false, unique = true)
+    private String cpf;
+
+    private String cidade;
+    private String telefone;
     private LocalDate dataNasc;
+
+    @Transient
     private CPAP cpap;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Relatorio> relatorios;
 
     public Paciente() {}
 
-    public Paciente(int ID, String nome, String CPF, String cidade, String telefone, LocalDate dataNasc) {
-        this.ID = ID;
+    public Paciente(Long id, String nome, String cpf, String cidade, String telefone, LocalDate dataNasc) {
+        this.id = id;
         this.nome = nome;
-        this.CPF = CPF;
+        this.cpf = cpf;
         this.cidade = cidade;
         this.telefone = telefone;
         this.dataNasc = dataNasc;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setCidade(String cidade) {
@@ -44,20 +65,25 @@ public class Paciente {
         this.dataNasc = dataNasc;
     }
 
-    public void setCpap(int ID, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante){
-        this.cpap = new CPAP(ID, modelo, tipoConexao, status, dataInicio, fabricante);
+    public void setCpap(Long id, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante){
+        this.cpap = new CPAP(id, modelo, tipoConexao, status, dataInicio, fabricante);
     }
 
-    public int getID() {
-        return ID;
+    public void setRelatorios(List<Relatorio> relatorios){
+        this.relatorios = relatorios;
+    }
+
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
     public String getCidade() {
@@ -76,12 +102,16 @@ public class Paciente {
         return this.cpap;
     }
 
+    public List<Relatorio> getRelatorios(){
+        return relatorios;
+    }
+
     @Override
     public String toString() {
         return "{" +
-                "\nID: " + this.ID +
+                "\nID: " + this.id +
                 "\nNome: " + this.nome +
-                "\nCPF:" + this.CPF +
+                "\nCpf:" + this.cpf +
                 "\nCidade: " + this.cidade +
                 "\nTelefone: " + this.telefone +
                 "\nData de Nascimento: " + this.dataNasc +
