@@ -40,7 +40,7 @@ public class Administrador implements Autenticacao {
     }
 
     public void setSenha(String senha) {
-        this.senha = asenha;
+        this.senha = senha;
     }
 
     public Long getId() {
