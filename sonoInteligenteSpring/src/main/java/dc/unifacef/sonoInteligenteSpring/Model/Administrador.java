@@ -2,19 +2,37 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 
 import dc.unifacef.sonoInteligenteSpring.Model.Autenticacao;
 import dc.unifacef.sonoInteligenteSpring.Model.Paciente;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "administradores")
 public class Administrador implements Autenticacao {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome, email, senha;
-    private ArrayList<Paciente> pacientes;
+
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String senha;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "administradorId")
+    private List<Paciente> pacientes;
+
+    @Transient
     private boolean isLogged;
 
     public Administrador() {
-        this.pacientes = new ArrayList<>();
         this.isLogged = false;
     }
 
@@ -59,36 +77,17 @@ public class Administrador implements Autenticacao {
         return this.senha;
     }
 
-    public ArrayList getPacientes() {
+    public List<Paciente> getPacientes() {
         return this.pacientes;
     }
 
     @Override
-    public void login(String email, String senha){
-        if(email.equals("administrador@gmail.com") && senha.equals("SI1235")){
-            this.isLogged = true;
-            System.out.println("Logado como administrador na Sono Longeligente...");
-        } else {
-            System.out.println("Email ou senha incorretos!");
-        }
+    public void login(String email, String senha) {
+        this.isLogged = true;
     }
 
     @Override
-    public void logout(){
+    public void logout() {
         this.isLogged = false;
-        System.out.println("Saindo da conta...");
-    }
-
-    public void cadastrarPaciente(Long id, String nome, String CPF, String cidade, String telefone, LocalDate dataNasc){
-        this.pacientes.add(new Paciente(id, nome, CPF, cidade, telefone, dataNasc));
-    }
-
-    public Paciente getPaciente(Long id){
-        for(Paciente p : this.pacientes){
-            if(Objects.equals(p.getId(), id)){
-                return p;
-            }
-        }
-        return null;
     }
 }
