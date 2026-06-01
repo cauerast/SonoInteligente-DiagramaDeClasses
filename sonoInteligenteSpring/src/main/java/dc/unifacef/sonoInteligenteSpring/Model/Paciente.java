@@ -28,6 +28,7 @@ public class Paciente {
     private CPAP cpap;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Relatorio> relatorios;
 
     public Paciente() {}
