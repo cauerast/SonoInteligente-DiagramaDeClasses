@@ -28,19 +28,19 @@ public class Administrador implements Autenticacao {
     }
 
     public void setId(Long id) {
-        this.id = this.id;
+        this.id = id;
     }
 
     public void setNome(String nome) {
-        this.nome = this.nome;
+        this.nome = nome;
     }
 
     public void setEmail(String email) {
-        this.email = this.email;
+        this.email = email;
     }
 
     public void setSenha(String senha) {
-        this.senha = this.senha;
+        this.senha = asenha;
     }
 
     public Long getId() {
