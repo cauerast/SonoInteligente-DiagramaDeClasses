@@ -23,7 +23,7 @@ public class PacienteService {
         return repo.findById(id);
     }
 
-    public boolean remove(Long id){
+    public Boolean remove(Long id){
         if(repo.existsById(id)){
             repo.deleteById(id);
             return true;

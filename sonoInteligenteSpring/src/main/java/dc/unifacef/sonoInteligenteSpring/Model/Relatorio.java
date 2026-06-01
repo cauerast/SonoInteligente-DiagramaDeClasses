@@ -18,9 +18,9 @@ public class Relatorio {
     private String relatorio;
 
     @Column(nullable = false)
-    private Long IDPaciente;
+    private Paciente paciente;
 
-    public void setID(Long ID) {
+    public void setId(Long ID) {
         this.ID = ID;
     }
 
@@ -32,11 +32,11 @@ public class Relatorio {
         this.relatorio = relatorio;
     }
 
-    public void setIDPaciente(Long IDPaciente) {
-        this.IDPaciente = IDPaciente;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
-    public Long getID() {
+    public Long getId() {
         return this.ID;
     }
 
