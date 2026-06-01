@@ -3,7 +3,7 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 import java.time.LocalDateTime;
 
 public class CPAP {
-    private Long ID;
+    private Long id;
     private String modelo, tipoConexao;
     private boolean status;
     private LocalDateTime dataInicio;
@@ -12,8 +12,8 @@ public class CPAP {
 
     public CPAP() {}
 
-    public CPAP(Long ID, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante) {
-        this.ID = ID;
+    public CPAP(Long id, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante) {
+        this.id = id;
         this.modelo = modelo;
         this.tipoConexao = tipoConexao;
         this.status = status;
@@ -22,8 +22,8 @@ public class CPAP {
         this.fabricante = fabricante;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setModelo(String modelo) {
@@ -50,8 +50,8 @@ public class CPAP {
         this.fabricante = fabricante;
     }
 
-    public Long getID() {
-        return this.ID;
+    public Long getId() {
+        return this.id;
     }
 
     public String getModelo() {
@@ -76,19 +76,6 @@ public class CPAP {
 
     public Fabricante getFabricante(){
         return this.fabricante;
-    }
-
-    @Override
-    public String toString() {
-        return "\n\tCPAP{" +
-                "\nID: " + this.ID +
-                "\nModelo: " + this.modelo +
-                "\nTipo de Conexão: " + this.tipoConexao +
-                "\nStatus: " + this.status +
-                "\nData de Início: " + this.dataInicio +
-                "\nÚltima atualização: " + this.ultimaAtualizacao +
-                "\nFabricante: " + this.fabricante +
-                "\n}";
     }
 
     public void atualizarDados(){

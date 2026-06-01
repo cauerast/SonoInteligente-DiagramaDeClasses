@@ -3,8 +3,8 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 public class SmartLive extends Fabricante{
     public SmartLive() {}
 
-    public SmartLive(int ID, boolean statusConexao) {
-        super(ID);
+    public SmartLive(Long id, boolean statusConexao) {
+        super(id);
     }
 
     @Override
@@ -16,10 +16,4 @@ public class SmartLive extends Fabricante{
         }
     }
 
-    @Override
-    public String toString() {
-        return "SmartLive {" +
-                super.toString() +
-                "\n}";
-    }
 }

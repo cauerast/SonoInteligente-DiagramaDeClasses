@@ -64,17 +64,6 @@ public class Administrador implements Autenticacao {
     }
 
     @Override
-    public String toString() {
-        return "\n\tAdministrador {" +
-                "\nId: " + this.id +
-                "\nNome: " + this.nome +
-                "\nEmail: " + this.email +
-                "\nSenha: " + this.senha +
-                "\nPacientes: " + this.pacientes +
-                '}';
-    }
-
-    @Override
     public void login(String email, String senha){
         if(email.equals("administrador@gmail.com") && senha.equals("SI1235")){
             this.isLogged = true;

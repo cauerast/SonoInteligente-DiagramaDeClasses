@@ -27,14 +27,6 @@ public class WhatsApp {
         return this.relatorio;
     }
 
-    @Override
-    public String toString() {
-        return "\n\tWhatsApp{" +
-                "\nStatus: " + this.status +
-                "\nRelatório=" + this.relatorio +
-                "\n}";
-    }
-
     public void enviarRelatorio(){
         System.out.println("Enviando relatório...");
     }

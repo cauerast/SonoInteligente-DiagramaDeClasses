@@ -3,8 +3,8 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 public class CareOrchestrator extends Fabricante{
     public CareOrchestrator() {}
 
-    public CareOrchestrator(int ID, boolean statusConexao) {
-        super(ID);
+    public CareOrchestrator(Long id, boolean statusConexao) {
+        super(id);
     }
 
     @Override
@@ -14,12 +14,5 @@ public class CareOrchestrator extends Fabricante{
         } else {
             System.out.println("Falha ao extrair dados, verifique a conexão!");
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Care Orchestrator {" +
-                super.toString() +
-                "\n}";
     }
 }

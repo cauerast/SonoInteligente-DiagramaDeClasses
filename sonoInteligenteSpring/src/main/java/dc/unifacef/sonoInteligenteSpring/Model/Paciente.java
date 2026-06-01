@@ -79,7 +79,6 @@ public class Paciente {
         this.relatorios = relatorios;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -110,19 +109,6 @@ public class Paciente {
 
     public List<Relatorio> getRelatorios(){
         return relatorios;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\nId: " + this.id +
-                "\nNome: " + this.nome +
-                "\nCpf:" + this.cpf +
-                "\nCidade: " + this.cidade +
-                "\nTelefone: " + this.telefone +
-                "\nData de Nascimento: " + this.dataNasc +
-                "\nCPAP: " + this.cpap +
-                "\n}";
     }
 
     public void classificarIndiceApneia(){

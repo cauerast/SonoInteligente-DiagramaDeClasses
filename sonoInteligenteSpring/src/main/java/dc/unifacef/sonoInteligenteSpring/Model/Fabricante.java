@@ -1,13 +1,13 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
 public abstract class Fabricante{
-    protected int ID;
+    protected Long id;
     protected boolean statusConexao;
 
     public Fabricante() {}
 
-    public Fabricante(int ID) {
-        this.ID = ID;
+    public Fabricante(Long id) {
+        this.id = id;
         this.statusConexao = validarConexao();
     }
 
@@ -15,27 +15,20 @@ public abstract class Fabricante{
         System.out.println("Extraindo dados...");
     };
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(Long id) {
+        this.id = id;
     }
 
     public void setStatusConexao(boolean statusConexao) {
         this.statusConexao = statusConexao;
     }
 
-    public int getID() {
-        return this.ID;
+    public Long getId() {
+        return this.id;
     }
 
     public boolean isStatusConexao() {
         return this.statusConexao;
-    }
-
-    @Override
-    public String toString() {
-        return "\nID: " + this.ID +
-                "\nStatus de Conexão: " + this.statusConexao +
-                "\n}";
     }
 
     public boolean validarConexao(){
