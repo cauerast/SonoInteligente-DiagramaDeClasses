@@ -1,23 +1,26 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name="Relatorios")
 public class Relatorio {
-    private int ID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
+
+    @Column(nullable = false)
     private LocalDateTime dataEmissao;
+
+    @Column(nullable = false)
     private String relatorio;
-    private Paciente paciente;
 
-    public Relatorio() {}
+    @Column(nullable = false)
+    private Long IDPaciente;
 
-    public Relatorio(int ID, LocalDateTime dataEmissao, Paciente paciente) {
-        this.ID = ID;
-        this.dataEmissao = dataEmissao;
-        this.paciente = paciente;
-        this.relatorio = gerarRelatorio();
-    }
-
-    public void setID(int ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -29,38 +32,23 @@ public class Relatorio {
         this.relatorio = relatorio;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setIDPaciente(Long IDPaciente) {
+        this.IDPaciente = IDPaciente;
     }
 
-    public int getID() {
-        return ID;
+    public Long getID() {
+        return this.ID;
     }
 
     public LocalDateTime getDataEmissao() {
-        return dataEmissao;
+        return this.dataEmissao;
     }
 
     public String getRelatorio() {
-        return relatorio;
+        return this.relatorio;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public String gerarRelatorio(){
-        System.out.println("Gerando relatório...");
-        return paciente.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "\n\tRelatorio{" +
-                "\nID: " + this.ID +
-                "\nData de Emissão: " + this.dataEmissao +
-                "\nRelatório: " + this.relatorio +
-                "\nPaciente=" + this.paciente +
-                "\n}";
+    public Long getIDPaciente() {
+        return this.IDPaciente;
     }
 }
