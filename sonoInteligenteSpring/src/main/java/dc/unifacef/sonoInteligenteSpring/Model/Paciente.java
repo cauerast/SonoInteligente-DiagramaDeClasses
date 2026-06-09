@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -29,8 +28,9 @@ public class Paciente {
     @Column(nullable = false)
     private LocalDate dataNasc;
 
-    @Transient
-    private CPAP cpap;
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<CPAP> cpaps;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -71,8 +71,8 @@ public class Paciente {
         this.dataNasc = dataNasc;
     }
 
-    public void setCpap(Long id, String modelo, String tipoConexao, boolean status, LocalDateTime dataInicio, Fabricante fabricante){
-        this.cpap = new CPAP(id, modelo, tipoConexao, status, dataInicio, fabricante);
+    public void setCpaps(List<CPAP> cpaps) {
+        this.cpaps = cpaps;
     }
 
     public void setRelatorios(List<Relatorio> relatorios){
@@ -103,8 +103,8 @@ public class Paciente {
         return dataNasc;
     }
 
-    public CPAP getCpap(){
-        return this.cpap;
+    public List<CPAP> getCpaps(){
+        return this.cpaps;
     }
 
     public List<Relatorio> getRelatorios(){

@@ -24,12 +24,10 @@ public class RelatorioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Relatorio>> findById(@PathVariable Long id){
-        Optional<Relatorio> relatorio = service.findById(id);
-        if(relatorio.isEmpty()) {
-            ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(relatorio);
+    public ResponseEntity<Relatorio> findById(@PathVariable Long id){
+        return service.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping

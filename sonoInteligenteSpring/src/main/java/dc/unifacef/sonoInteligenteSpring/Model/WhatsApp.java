@@ -1,7 +1,19 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "whatsapps")
 public class WhatsApp {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
     private StatusEnvio status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "relatorio_id")
     private Relatorio relatorio;
 
     public WhatsApp() {}
@@ -9,6 +21,10 @@ public class WhatsApp {
     public WhatsApp(StatusEnvio status, Relatorio relatorio) {
         this.status = status;
         this.relatorio = relatorio;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setStatus(StatusEnvio status) {
@@ -19,6 +35,10 @@ public class WhatsApp {
         this.relatorio = relatorio;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public StatusEnvio getStatus() {
         return this.status;
     }
@@ -27,16 +47,16 @@ public class WhatsApp {
         return this.relatorio;
     }
 
-    public void enviarRelatorio(){
+    public void enviarRelatorio() {
         System.out.println("Enviando relatório...");
     }
 
-    public boolean isConectado(){
+    public boolean isConectado() {
         return true;
     }
 
-    public void reconectar(){
-        if(!this.isConectado()){
+    public void reconectar() {
+        if (!this.isConectado()) {
             System.out.println("Reconectando com o WhatsApp...");
         } else {
             System.out.println("Conexão já estabelecida");

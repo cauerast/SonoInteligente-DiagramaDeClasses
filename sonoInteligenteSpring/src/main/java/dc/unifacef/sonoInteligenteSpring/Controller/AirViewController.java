@@ -24,12 +24,10 @@ public class AirViewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<AirView>> findById(@PathVariable Long id) {
-        Optional<AirView> airView = service.findById(id);
-        if(airView.isEmpty()) {
-            ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(airView);
+    public ResponseEntity<AirView> findById(@PathVariable Long id) {
+        return service.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping

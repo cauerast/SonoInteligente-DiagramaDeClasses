@@ -1,14 +1,30 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "cpaps")
 public class CPAP {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String modelo, tipoConexao;
+
+    private String modelo;
+    private String tipoConexao;
     private boolean status;
     private LocalDateTime dataInicio;
     private LocalDateTime ultimaAtualizacao;
-    private Fabricante fabricante;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paciente_id")
+    @JsonIgnore
+    private Paciente paciente;
+
+    private String fabricanteTipo;
+    private Long fabricanteId;
 
     public CPAP() {}
 
@@ -19,7 +35,10 @@ public class CPAP {
         this.status = status;
         this.dataInicio = dataInicio;
         this.ultimaAtualizacao = LocalDateTime.now();
-        this.fabricante = fabricante;
+        if (fabricante != null) {
+            this.fabricanteTipo = fabricante.getClass().getSimpleName();
+            this.fabricanteId = fabricante.getId();
+        }
     }
 
     public void setId(Long id) {
@@ -46,8 +65,15 @@ public class CPAP {
         this.ultimaAtualizacao = ultimaAtualizacao;
     }
 
-    public void setFabricante(Fabricante fabricante){
-        this.fabricante = fabricante;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public void setFabricante(Fabricante fabricante) {
+        if (fabricante != null) {
+            this.fabricanteTipo = fabricante.getClass().getSimpleName();
+            this.fabricanteId = fabricante.getId();
+        }
     }
 
     public Long getId() {
@@ -74,11 +100,15 @@ public class CPAP {
         return this.ultimaAtualizacao;
     }
 
-    public Fabricante getFabricante(){
-        return this.fabricante;
+    public Paciente getPaciente() {
+        return this.paciente;
     }
 
-    public void atualizarDados(){
-        System.out.println("Atualizando os dados do paciente...");
+    public String getFabricanteTipo() {
+        return fabricanteTipo;
+    }
+
+    public Long getFabricanteId() {
+        return fabricanteId;
     }
 }
