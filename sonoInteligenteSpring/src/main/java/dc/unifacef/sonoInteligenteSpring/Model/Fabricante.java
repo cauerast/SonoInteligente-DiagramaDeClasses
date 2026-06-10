@@ -3,7 +3,9 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "fabricantes")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class Fabricante{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
