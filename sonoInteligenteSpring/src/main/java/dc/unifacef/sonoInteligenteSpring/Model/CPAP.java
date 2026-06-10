@@ -23,8 +23,9 @@ public class CPAP {
     @JsonIgnore
     private Paciente paciente;
 
-    private String fabricanteTipo;
-    private Long fabricanteId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fabricante_id")
+    private Fabricante fabricante;
 
     public CPAP() {}
 
@@ -35,10 +36,7 @@ public class CPAP {
         this.status = status;
         this.dataInicio = dataInicio;
         this.ultimaAtualizacao = LocalDateTime.now();
-        if (fabricante != null) {
-            this.fabricanteTipo = fabricante.getClass().getSimpleName();
-            this.fabricanteId = fabricante.getId();
-        }
+        this.fabricante = fabricante;
     }
 
     public void setId(Long id) {
@@ -70,10 +68,7 @@ public class CPAP {
     }
 
     public void setFabricante(Fabricante fabricante) {
-        if (fabricante != null) {
-            this.fabricanteTipo = fabricante.getClass().getSimpleName();
-            this.fabricanteId = fabricante.getId();
-        }
+        this.fabricante = fabricante;
     }
 
     public Long getId() {
@@ -104,11 +99,7 @@ public class CPAP {
         return this.paciente;
     }
 
-    public String getFabricanteTipo() {
-        return fabricanteTipo;
-    }
-
-    public Long getFabricanteId() {
-        return fabricanteId;
+    public Fabricante getFabricante() {
+        return this.fabricante;
     }
 }

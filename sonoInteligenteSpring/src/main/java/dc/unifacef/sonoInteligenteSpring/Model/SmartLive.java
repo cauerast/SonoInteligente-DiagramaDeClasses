@@ -1,10 +1,11 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "smartLive")
+@PrimaryKeyJoinColumn(name = "id")
 public class SmartLive extends Fabricante{
 
 }

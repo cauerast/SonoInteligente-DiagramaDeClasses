@@ -2,7 +2,8 @@ package dc.unifacef.sonoInteligenteSpring.Model;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Fabricante{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
