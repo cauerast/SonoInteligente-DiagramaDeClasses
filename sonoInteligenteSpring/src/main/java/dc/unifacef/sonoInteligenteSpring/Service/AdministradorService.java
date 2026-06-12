@@ -25,14 +25,14 @@ public class AdministradorService {
         if (adminOptional.isPresent()) {
             admin = adminOptional.get();
         } else {
-            throw new RuntimeException("E-mail não cadastrado!");
+            throw new RuntimeException("E-mail ou senha incorretos!");
         }
 
         if (admin.getSenha().equals(senha)) {
             admin.login(email, senha);
             return "Login efetuado com sucesso -> " + admin.getNome();
         } else {
-            throw new RuntimeException("Senha incorreta");
+            throw new RuntimeException("E-mail ou senha incorretos!");
         }
     }
 
