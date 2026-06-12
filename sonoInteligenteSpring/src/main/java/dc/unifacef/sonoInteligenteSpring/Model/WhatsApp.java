@@ -1,5 +1,6 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class WhatsApp {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "relatorio_id")
+    @JsonIgnore
     private Relatorio relatorio;
 
     public WhatsApp() {}

@@ -1,5 +1,6 @@
 package dc.unifacef.sonoInteligenteSpring.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
 public class Relatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
     @Column(nullable = false)
     private LocalDateTime dataEmissao;
@@ -19,10 +20,11 @@ public class Relatorio {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPaciente", nullable = false)
+    @JsonIgnore
     private Paciente paciente;
 
     public void setId(Long ID) {
-        this.ID = ID;
+        this.id = id;
     }
 
     public void setDataEmissao(LocalDateTime dataEmissao) {
@@ -38,7 +40,7 @@ public class Relatorio {
     }
 
     public Long getId() {
-        return this.ID;
+        return this.id;
     }
 
     public LocalDateTime getDataEmissao() {
